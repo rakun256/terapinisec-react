@@ -1,0 +1,19 @@
+{
+  "short_name": "Terapini Seç",
+  "name": "TerapiniSeç | Ruh Sağlığınızı İyileştirin",
+  "description": "TerapiniSeç ile ruh sağlığınızı iyileştirin. Uzman terapistler, online terapi seansları ve kişisel gelişim araçları.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "512x512 192x192 64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#E0EDF5",
+  "background_color": "#28617f",
+  "categories": ["health", "medical", "lifestyle"],
+  "lang": "tr",
+  "dir": "ltr"
+}
