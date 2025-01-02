@@ -7,14 +7,14 @@ const LandingPage = () => {
   return (
     <div className="relative h-screen w-full">
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute w-full h-full"
         style={{
           backgroundImage: `url(${Background})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          filter: "blur(8px)",
-          opacity: "0.75",
+          filter: "blur(6px)",
+          opacity: "0.70",
         }}
       />
       <div className="relative z-10 h-full flex justify-center items-center">

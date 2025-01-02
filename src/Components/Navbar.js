@@ -1,15 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ sections }) => {
   const [active, setActive] = useState("home");
 
   const navItems = [
-    { id: "home", icon: "home", label: "Home" },
-    { id: "app", icon: "smartphone", label: "App" },
-    { id: "comments", icon: "chat_bubble", label: "Comments" },
-    { id: "stats", icon: "monitoring", label: "Stats" },
-    { id: "download", icon: "download", label: "Download" },
+    { id: "home", icon: "home", label: "Ana Sayfa" },
+    { id: "app", icon: "smartphone", label: "Uygulama" },
+    { id: "comments", icon: "chat_bubble", label: "Yorumlar" },
+    { id: "stats", icon: "monitoring", label: "İstatistikler" },
+    { id: "download", icon: "download", label: "İndir" },
   ];
+
+  const handleScroll = () => {
+    const offsets = Object.entries(sections)
+      .filter(([_, ref]) => ref.current)
+      .map(([id, ref]) => ({
+        id,
+        offsetTop: ref.current.offsetTop,
+      }));
+
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    const current = offsets
+      .filter((section) => scrollPosition >= section.offsetTop)
+      .pop();
+
+    if (current) setActive(current.id);
+    else setActive(offsets[0]?.id || "");
+  };
+
+  useEffect(() => {
+    const checkRefs = () =>
+      Object.values(sections).every((ref) => ref.current !== null);
+    if (checkRefs()) {
+      window.addEventListener("scroll", handleScroll);
+    }
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = (id) => {
+    window.removeEventListener("scroll", handleScroll);
+    setActive(id);
+    sections[id].current.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      window.addEventListener("scroll", handleScroll);
+    }, 1000);
+  };
 
   return (
     <div className="fixed top-5 left-0 right-0 flex justify-center items-center z-50 ">
@@ -18,7 +53,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActive(item.id)}
+              onClick={() => handleClick(item.id)}
               className={`flex items-center space-x-1 group transition-all duration-300 ease-in-out px-2 py-1 rounded-full
                         ${
                           active === item.id
@@ -33,8 +68,8 @@ const Navbar = () => {
                 className={`hidden md:flex font-light text-md overflow-hidden transition-all duration-300 ease-in-out items-center justify-center text-accentLight
               ${
                 active === item.id
-                  ? "max-w-[100px] opacity-100"
-                  : "max-w-0 opacity-0"
+                  ? "text-md max-w-[100px] opacity-100"
+                  : "text-[0px] max-w-0 opacity-0"
               } `}
               >
                 {item.label}
