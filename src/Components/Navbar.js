@@ -38,12 +38,9 @@ const Navbar = ({ sections }) => {
   }, []);
 
   const handleClick = (id) => {
-    window.removeEventListener("scroll", handleScroll);
-    setActive(id);
-    sections[id].current.scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 1000);
+    if (sections[id]?.current) {
+      sections[id].current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
