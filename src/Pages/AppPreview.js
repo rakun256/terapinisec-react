@@ -140,99 +140,107 @@ export default function AppPreview() {
   };
 
   return (
-    <div ref={containerRef} className="h-screen relative overflow-hidden">
-      <div
-        className={`transition-all duration-700 ${
-          isVisible ? "fixed" : "absolute"
-        } inset-0 z-10 ${isMobile ? "h-1/2" : "h-full"}`}
-      >
-        <Canvas
-          camera={{
-            position: isMobile ? [0, 0, 15] : [0, 0, 12],
-            fov: isMobile ? 35 : 25,
-          }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, transition: { duration: 0.7 } }}
+      viewport={{ once: true, amount: 0.5 }}
+    >
+      <div ref={containerRef} className="h-[100vh] relative overflow-hidden">
+        <div
+          className={`transition-all duration-700 ${
+            isVisible ? "fixed" : "absolute"
+          } inset-0 z-10 ${isMobile ? "h-1/2" : "h-full"}`}
         >
-          <ambientLight intensity={0.7} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <PhoneModel currentSection={currentSection} isMobile={isMobile} />
-        </Canvas>
-      </div>
-
-      <div className="absolute z-20 bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4">
-        {features.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSection(index)}
-            className={` w-3 h-3 rounded-full transition-colors ${
-              currentSection === index ? "bg-accentDark" : "bg-textLight"
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="relative h-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className={`absolute z-10 w-full ${
-              isMobile
-                ? "top-1/2 px-6 text-center"
-                : "inset-0 flex items-center"
-            }`}
+          <Canvas
+            camera={{
+              position: isMobile ? [0, 0, 15] : [0, 0, 12],
+              fov: isMobile ? 35 : 25,
+            }}
           >
-            <div
-              className={`${isMobile ? "w-full mt-8" : "w-[400px]"} ${
-                !isMobile && features[currentSection].textPosition === "left"
-                  ? "ml-80"
-                  : ""
-              } ${
-                !isMobile && features[currentSection].textPosition === "right"
-                  ? "ml-auto mr-80"
-                  : ""
+            <ambientLight intensity={0.7} />
+            <directionalLight position={[5, 5, 5]} intensity={1} />
+            <PhoneModel currentSection={currentSection} isMobile={isMobile} />
+          </Canvas>
+        </div>
+
+        <div className="absolute z-20 bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4">
+          {features.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSection(index)}
+              className={` w-3 h-3 rounded-full transition-colors ${
+                currentSection === index ? "bg-accentDark" : "bg-textLight"
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="relative h-full">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className={`absolute z-10 w-full ${
+                isMobile
+                  ? "top-1/2 px-6 text-center"
+                  : "inset-0 flex items-center"
               }`}
             >
-              <h2
-                className={`font-bold text-textDark mb-4 ${
-                  isMobile ? "text-3xl" : "text-6xl"
+              <div
+                className={`${isMobile ? "w-full mt-8" : "w-[700px]"} ${
+                  !isMobile && features[currentSection].textPosition === "left"
+                    ? "ml-80"
+                    : ""
+                } ${
+                  !isMobile && features[currentSection].textPosition === "right"
+                    ? "ml-auto mr-80"
+                    : ""
                 }`}
               >
-                {features[currentSection].title}
-              </h2>
-              <p
-                className={`text-textLight ${
-                  isMobile ? "text-lg" : "text-3xl"
-                }`}
-              >
-                {features[currentSection].description}
-              </p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+                <h2
+                  className={`font-bold text-textDark mb-4 ${
+                    isMobile ? "text-3xl" : "text-6xl"
+                  }`}
+                >
+                  {features[currentSection].title}
+                </h2>
+                <p
+                  className={`text-textLight ${
+                    isMobile ? "text-lg" : "text-3xl"
+                  }`}
+                >
+                  {features[currentSection].description}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <button
+          onClick={prevSlide}
+          className={`absolute z-20 left-4 top-1/2 -translate-y-1/2 ${
+            currentSection === 0 ? "opacity-30" : "opacity-100"
+          }`}
+        >
+          <span className="material-symbols-rounded text-4xl text-accentDark">
+            arrow_back
+          </span>
+        </button>
+        <button
+          onClick={nextSlide}
+          className={`absolute z-20 right-4 top-1/2 -translate-y-1/2 ${
+            currentSection === features.length - 1
+              ? "opacity-30"
+              : "opacity-100"
+          }`}
+        >
+          <span className="material-symbols-rounded text-4xl text-accentDark">
+            arrow_forward
+          </span>
+        </button>
       </div>
-      <button
-        onClick={prevSlide}
-        className={`absolute z-20 left-4 top-1/2 -translate-y-1/2 ${
-          currentSection === 0 ? "opacity-30" : "opacity-100"
-        }`}
-      >
-        <span className="material-symbols-rounded text-4xl text-accentDark">
-          arrow_back
-        </span>
-      </button>
-      <button
-        onClick={nextSlide}
-        className={`absolute z-20 right-4 top-1/2 -translate-y-1/2 ${
-          currentSection === features.length - 1 ? "opacity-30" : "opacity-100"
-        }`}
-      >
-        <span className="material-symbols-rounded text-4xl text-accentDark">
-          arrow_forward
-        </span>
-      </button>
-    </div>
+    </motion.div>
   );
 }

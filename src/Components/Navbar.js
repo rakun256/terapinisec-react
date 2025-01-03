@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 const Navbar = ({ sections }) => {
   const [active, setActive] = useState("home");
 
