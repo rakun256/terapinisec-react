@@ -67,56 +67,104 @@ const Comments = (index) => {
         </div>
       )}
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: index % 2 === 0 ? -500 : 500,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-          transition: { duration: 1 },
-        }}
-        viewport={{ once: true, amount: 0.3 }}
-        exit={{ opacity: 0, x: index % 2 === 0 ? -500 : 500 }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-24 place-items-center">
-          {CommentProps.map((comment, index) => (
-            <div
-              key={index}
-              className="bg-accentDark/70  rounded-3xl py-6 flex flex-col items-center space-y-4 text-center
+      {!isMobile ? (
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: index % 2 === 0 ? -500 : 500,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 1 },
+          }}
+          viewport={{ once: true, amount: 0.3 }}
+          exit={{ opacity: 0, x: index % 2 === 0 ? -500 : 500 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-24 place-items-center">
+            {CommentProps.map((comment, index) => (
+              <div
+                key={index}
+                className="bg-accentDark/70  rounded-3xl py-6 flex flex-col items-center space-y-4 text-center
               w-[280px] sm:w-[320px] md:w-[340px] xl:w-[380px] h-[350px] shadow-[0_15px_40px_#28617F] "
-            >
-              <p className="text-accentLight font-bold text-3xl">
-                {comment.name}
-              </p>
-              <p className="text-accentLight text-lg w-3/4">
-                {comment.comment}
-              </p>
-              <div className="flex justify-center items-center space-x-1">
-                {Array.from({ length: 5 }).map((_, starIndex) => {
-                  const filled = starIndex < Math.round(comment.point);
-                  return (
-                    <span
-                      key={starIndex}
-                      className={`${
-                        filled
-                          ? "material-symbols-rounded-fill"
-                          : "material-symbols-rounded"
-                      } text-xl text-accentLight`}
-                    >
-                      star
-                    </span>
-                  );
-                })}
+              >
+                <p className="text-accentLight font-bold text-3xl">
+                  {comment.name}
+                </p>
+                <p className="text-accentLight text-lg w-3/4">
+                  {comment.comment}
+                </p>
+                <div className="flex justify-center items-center space-x-1">
+                  {Array.from({ length: 5 }).map((_, starIndex) => {
+                    const filled = starIndex < Math.round(comment.point);
+                    return (
+                      <span
+                        key={starIndex}
+                        className={`${
+                          filled
+                            ? "material-symbols-rounded-fill"
+                            : "material-symbols-rounded"
+                        } text-xl text-accentLight`}
+                      >
+                        star
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accentLight flex justify-center items-center text-accentDark font-bold text-2xl">
+                  {comment.point}
+                </div>
               </div>
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accentLight flex justify-center items-center text-accentDark font-bold text-2xl">
-                {comment.point}
+            ))}
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{
+            duration: 1.5,
+            delay: 0.5,
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-24 place-items-center">
+            {CommentProps.map((comment, index) => (
+              <div
+                key={index}
+                className="bg-accentDark/70  rounded-3xl py-6 flex flex-col items-center space-y-4 text-center
+              w-[280px] sm:w-[320px] md:w-[340px] xl:w-[380px] h-[350px] shadow-[0_15px_40px_#28617F] "
+              >
+                <p className="text-accentLight font-bold text-3xl">
+                  {comment.name}
+                </p>
+                <p className="text-accentLight text-lg w-3/4">
+                  {comment.comment}
+                </p>
+                <div className="flex justify-center items-center space-x-1">
+                  {Array.from({ length: 5 }).map((_, starIndex) => {
+                    const filled = starIndex < Math.round(comment.point);
+                    return (
+                      <span
+                        key={starIndex}
+                        className={`${
+                          filled
+                            ? "material-symbols-rounded-fill"
+                            : "material-symbols-rounded"
+                        } text-xl text-accentLight`}
+                      >
+                        star
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accentLight flex justify-center items-center text-accentDark font-bold text-2xl">
+                  {comment.point}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 };
