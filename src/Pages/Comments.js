@@ -119,14 +119,6 @@ const Comments = (index) => {
           </div>
         </motion.div>
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{
-            duration: 1.5,
-            delay: 0.5,
-          }}
-        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-24 place-items-center">
             {CommentProps.map((comment, index) => (
               <div
@@ -163,7 +155,6 @@ const Comments = (index) => {
               </div>
             ))}
           </div>
-        </motion.div>
       )}
     </div>
   );
