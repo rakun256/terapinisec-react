@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const CommentProps = [
@@ -28,27 +28,44 @@ const CommentProps = [
 ];
 
 const Comments = (index) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-backgroundLight p-4">
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: index % 2 === 0 ? 500 : -500,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-          transition: {
-            duration: 1,
-          },
-        }}
-        viewport={{ once: false }}
-        exit={{ opacity: 0, x: index % 2 === 0 ? 500 : -500 }}
-      >
-        <h1 className="font-bold text-textDark mb-8 md:text-6xl text-3xl">
-          Kullanıcı Yorumlarımız
-        </h1>
-      </motion.div>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4">
+      {!isMobile ? (
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: index % 2 === 0 ? 500 : -500,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 1 },
+          }}
+          viewport={{ once: true, amount: 0.3 }}
+          exit={{ opacity: 0, x: index % 2 === 0 ? 500 : -500 }}
+        >
+          <h1 className="font-bold text-textDark mb-8 md:text-6xl text-4xl ">
+            Kullanıcı Yorumlarımız
+          </h1>
+        </motion.div>
+      ) : (
+        <div>
+          <h1 className="font-bold text-textDark mb-16 md:text-6xl text-4xl text-center">
+            Kullanıcı Yorumlarımız
+          </h1>
+        </div>
+      )}
 
       <motion.div
         initial={{
@@ -58,11 +75,9 @@ const Comments = (index) => {
         whileInView={{
           opacity: 1,
           x: 0,
-          transition: {
-            duration: 1,
-          },
+          transition: { duration: 1 },
         }}
-        viewport={{ once: false }}
+        viewport={{ once: true, amount: 0.3 }}
         exit={{ opacity: 0, x: index % 2 === 0 ? -500 : 500 }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-24 place-items-center">
@@ -70,7 +85,7 @@ const Comments = (index) => {
             <div
               key={index}
               className="bg-accentDark/70  rounded-3xl py-6 flex flex-col items-center space-y-4 text-center
-              w-[280px] sm:w-[320px] md:w-[340px] xl:w-[380px] h-[350px] shadow-[0_15px_40px_#28617F] shadow-[inset_-15px_4px_27px_35px_#28617F]"
+              w-[280px] sm:w-[320px] md:w-[340px] xl:w-[380px] h-[350px] shadow-[0_15px_40px_#28617F] "
             >
               <p className="text-accentLight font-bold text-3xl">
                 {comment.name}
