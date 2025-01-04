@@ -4,21 +4,22 @@ import Navbar from './Components/Navbar';
 import LandingPage from './Pages/LandingPage';
 import AppPreview from './Pages/AppPreview';
 import Comments from './Pages/Comments';
+import Stats from './Pages/Stats';
 
 function App() {
 
   const homeRef = useRef(null);
   const appRef = useRef(null);
   const commentsRef = useRef(null);
-  /*const statsRef = useRef(null);
-  const downloadRef = useRef(null);*/
+  const statsRef = useRef(null);
+  /*const downloadRef = useRef(null);*/
 
   const sections = {
     home: homeRef,
     app: appRef,
     comments: commentsRef,
-    /*stats: statsRef,
-    download: downloadRef,*/
+    stats: statsRef,
+    /*download: downloadRef,*/
   };
 
   return (
@@ -32,6 +33,9 @@ function App() {
       </div>
       <div ref={commentsRef} className='p-8'>
         <Comments />
+      </div>
+      <div ref={statsRef} className='p-8'>
+        <Stats />
       </div>
     </div>
   );
