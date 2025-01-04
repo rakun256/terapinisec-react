@@ -40,7 +40,7 @@ const Comments = (index) => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4">
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 md:mt-0 mt-8">
       {!isMobile ? (
         <motion.div
           initial={{
