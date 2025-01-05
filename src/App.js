@@ -5,6 +5,7 @@ import LandingPage from './Pages/LandingPage';
 import AppPreview from './Pages/AppPreview';
 import Comments from './Pages/Comments';
 import Stats from './Pages/Stats';
+import Download from './Pages/Download';
 
 function App() {
 
@@ -12,14 +13,14 @@ function App() {
   const appRef = useRef(null);
   const commentsRef = useRef(null);
   const statsRef = useRef(null);
-  /*const downloadRef = useRef(null);*/
+  const downloadRef = useRef(null);
 
   const sections = {
     home: homeRef,
     app: appRef,
     comments: commentsRef,
     stats: statsRef,
-    /*download: downloadRef,*/
+    download: downloadRef,
   };
 
   return (
@@ -36,6 +37,9 @@ function App() {
       </div>
       <div ref={statsRef} className='p-8'>
         <Stats />
+      </div>
+      <div ref={downloadRef} className='p-8'>
+        <Download />
       </div>
     </div>
   );
