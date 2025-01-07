@@ -1,50 +1,58 @@
-# TerapiniSeç
+## TerapiniSeç | Ruh Sağlığınızı İyileştirin
 
-Online terapi platformu TerapiniSeç'in React tabanlı web uygulaması.
+Online terapi platformu *TerapiniSeç*’in **React** tabanlı web uygulaması. Ruh sağlığınızı iyileştirmenize yardımcı olmak için tasarlanmış birçok özellik içerir: duygu durum takibi, haftalık raporlar, kişisel gelişim hedefleri, sanal grup terapisi, meditasyon seansları ve daha fazlası.
 
-## 🚀 Tech Stack
+---
 
-- React.js 18.3.1
-- Tailwind CSS 3.4.17
-- Web Vitals
-- Progressive Web App (PWA)
+### Özellikler
+- **Duygu Durum Takibi**: Anlık duygu durumunuzu kaydedin ve değişiklikleri takip edin  
+- **Psikolog Onaylı Öneriler**: Uzman terapistler tarafından oluşturulmuş kişisel öneriler  
+- **Haftalık Raporlar**: Ruh sağlığınızdaki ilerlemeyi analiz edin  
+- **Sanal Grup Terapisi**: Diğer kullanıcılarla ortak seanslara katılın  
+- **Meditasyon Seansları**: Rahatlamanızı sağlayacak rehberli seanslar  
+- **Sesli Mesajlaşma**: Anında destek almak için pratik haberleşme  
+- **Kişisel Gelişim Hedefleri**: Gelişim hedeflerinizi belirleyip ilerlemenizi kaydedin  
+- **Kaynak Kütüphanesi**: Psikologların eklediği makaleler ve kaynakları keşfedin
 
-## 🛠️ Kurulum
+---
 
-1. Repoyu klonlayın:
-```bash
-git clone https://github.com/yourusername/terapinisec-react.git
+### Teknoloji Yığını
+- **React.js 18.3.1**: Uygulamanın temel front-end çatısı  
+- **Tailwind CSS 3.4.17**: Hızlı stil oluşturma ve özelleştirme  
+- **Framer Motion**: Animasyonlar ve geçiş efektleri  
+- **Three.js & @react-three/fiber**: 3D model görselleştirmesi  
+- **GSAP**: Gelişmiş animasyon özellikleri  
+- **PWA (Progressive Web App)**: Çevrimdışı destek ve mobil uyumluluk  
+- **Web Vitals**: Performans ölçümleri  
+
+---
+
+### Kurulum
+1. Bu depoyu klonlayın:
+   ```bash
+   git clone https://github.com/rakun256/terapinisec-react.git
+   ```
+2. Ana klasöre girin:
+   ```bash
+   cd terapinisec-react
+   ```
+3. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+4. Geliştirme sunucusunu çalıştırın:
+   ```bash
+   npm start
+   ```
+   Ardından tarayıcınızda `http://localhost:3000` adresine erişerek uygulamayı görüntüleyebilirsiniz.
+
+---
+
+### Proje Yapısı
 ```
-
-2. Bağımlılıkları yükleyin:
-```bash
-cd terapinisec-react
-npm install
-```
-
-3. Geliştirme sunucusunu başlatın:
-```bash
-npm start
-```
-
-## 🌟 Özellikler
-* Progressive Web App (PWA) desteği
-* Responsive tasarım
-* SEO optimizasyonu
-* Performans optimizasyonu
-* Web Vitals entegrasyonu
-
-## 🎨 Renk Paleti
-* Açık Vurgu: #E0EDF5
-* Koyu Vurgu: #28617F
-* Açık Arkaplan: #E0EDF5
-* Koyu Metin: #003554
-* Açık Metin: #486A6C
-
-## 📦 Proje Yapısı
-```bash
 terapinisec-react/
 ├── public/
+│   ├── Models/
 │   ├── index.html
 │   ├── manifest.json
 │   └── robots.txt
@@ -53,10 +61,30 @@ terapinisec-react/
 │   ├── Components/
 │   ├── Pages/
 │   ├── App.js
-│   └── index.js
-└── package.json
+│   ├── index.js
+│   └── index.css
+├── package.json
+└── README.md
 ```
 
-## 📞 İletişim
-* Website: https://terapinisec.com
-* Email: info@terapinisec.com
+---
+
+### Nasıl Kullanılır?
+- **LandingPage.js**: Projenin açılış ekranını barındırır  
+- **AppPreview.js**: 3D model (telefon) ile uygulamanın bölümlerini tanıtır  
+- **Comments.js**: Kullanıcı yorumlarını gösterir  
+- **Stats.js**: İndirme ve kullanıcı istatistiklerini sergiler  
+- **Download.js**: Uygulamayı indirme sayfasını içerir   
+
+---
+
+### Lisans
+Tüm hakları saklıdır / All rights reserved
+
+---
+
+### İletişim
+- **Website**: [https://terapinisec.com](https://terapinisec.com)  
+- **Email**: info@terapinisec.com  
+
+---
