@@ -153,7 +153,7 @@ const Stats = (index) => {
           </motion.div>
         </div>
       ) : (
-        <div className="mt-96 px-2 w-full h-auto flex flex-col space-y-8 py-16 ">
+        <div className="px-2 w-full h-auto flex flex-col space-y-8 py-16 ">
           <h1 className="font-bold text-textDark text-4xl text-center ">
             TerapiniSeç İstatistikleri
           </h1>

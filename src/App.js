@@ -35,10 +35,10 @@ function App() {
       <div ref={commentsRef} className='p-8'>
         <Comments />
       </div>
-      <div ref={statsRef} className='p-8'>
+      <div ref={statsRef} className='p-8 md:mt-0 mt-96'>
         <Stats />
       </div>
-      <div ref={downloadRef} className='p-8'>
+      <div ref={downloadRef} className='p-8 md:mt-0 mt-96'>
         <Download />
       </div>
     </div>

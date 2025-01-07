@@ -34,8 +34,8 @@ const Download = () => {
               Zihinsel Sağlığın için En İyi Arkadaşın
             </h1>
             <p className="text-xl text-textLight leading-relaxed">
-              Mood tracking, psikolog onaylı öneriler, grup terapisi ve daha fazlasıyla,  
-              TerapiniSeç hep yanında.
+              Mood tracking, psikolog onaylı öneriler, grup terapisi ve daha
+              fazlasıyla, TerapiniSeç hep yanında.
             </p>
             <div className="flex space-x-4 pt-4">
               <a
@@ -79,7 +79,8 @@ const Download = () => {
                   • Sanal grup terapisi ve meditasyon seanslarına katıl.
                 </span>
                 <span className="block">
-                  • Uzmanların eklediği kişisel gelişim kaynaklarına hızlıca eriş.
+                  • Uzmanların eklediği kişisel gelişim kaynaklarına hızlıca
+                  eriş.
                 </span>
               </p>
             </div>
@@ -87,42 +88,15 @@ const Download = () => {
         </div>
       ) : (
         // Mobil Görünüm
-        <div className="flex flex-col items-center max-w-xl w-full space-y-6 mt-8">
-          <motion.h1
-            className="text-4xl font-bold text-textDark text-center leading-tight"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8 },
-            }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
+        <div className="flex flex-col items-center max-w-xl w-full space-y-6">
+          <h1 className="text-4xl font-bold text-textDark text-center leading-tight">
             Zihinsel Sağlığın için En İyi Arkadaşın
-          </motion.h1>
-          <motion.p
-            className="text-base text-textLight text-center leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8 },
-            }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            Mood tracking, psikolog onaylı öneriler, grup terapisi ve daha fazlasıyla,  
-            TerapiniSeç hep yanında.
-          </motion.p>
-          <motion.div
-            className="bg-white rounded-2xl shadow-lg w-full p-6 text-textDark"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-              transition: { duration: 0.8 },
-            }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          </h1>
+          <p className="text-base text-textLight text-center leading-relaxed">
+            Mood tracking, psikolog onaylı öneriler, grup terapisi ve daha
+            fazlasıyla, TerapiniSeç hep yanında.
+          </p>
+          <div className="bg-white rounded-2xl shadow-lg w-full p-6 text-textDark">
             <h2 className="text-xl font-bold mb-3">TerapiniSeç Neler Sunar?</h2>
             <p className="text-sm leading-relaxed space-y-1">
               <span className="block">
@@ -138,8 +112,7 @@ const Download = () => {
                 • Uzmanların eklediği kişisel gelişim kaynaklarına hızlıca eriş.
               </span>
             </p>
-          </motion.div>
-
+          </div>
           <div className="flex flex-col items-center w-full space-y-4 pt-4">
             <a
               href="https://play.google.com"
